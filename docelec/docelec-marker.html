@@ -6,7 +6,7 @@
 <script src="../lib/aframe/aframe.min.js"></script>
 	  <script src="../lib/aframe/aframe-ar.min.js"></script>
 	  <script>THREEx.ArToolkitContext.baseURL = "https://rawgit.com/jeromeetienne/ar.js/master/three.js/"</script>
-<!--<script src="https://rawgit.com/gasolin/aframe-href-component/master/dist/aframe-href-component.min.js"></script>-->
+<script src="https://rawgit.com/gasolin/aframe-href-component/master/dist/aframe-href-component.min.js"></script>
 	   <style>
 #arjsDebugUIContainer {
     display: none;}
@@ -16,39 +16,14 @@
   </head>     
  <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
 	<a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
-		<!-- handle unknown marker -->
-		<!-- <a-marker type='unknown'>
-			<a-box depth="1" height="1" width="1" position='0 0.5 0' material='opacity: 0.5; side:double; color:blue;'></a-box>
-		</a-marker> -->
-
-		<!-- handle hiro marker -->
-		<a-marker preset='hiro'>
-			<a-box position='0 0.5 0' material='opacity: 0.5; side: double;color:red;'>
-				<a-torus-knot radius='0.26' radius-tubular='0.05'>
-					<a-animation attribute="rotation" to="360 0 0" dur="5000" easing='linear' repeat="indefinite"></a-animation>
-				</a-torus-knot>
+		 <a-marker preset="hiro">
+<a-box position='0 0.5 0' material='opacity: 0.5; side: double;color:red;' href='http://catalogue.unice.fr:1701/primo-explore/search?query=any,contains,sociologie&amp;tab=default_tab&amp;search_scope=UNS&amp;sortby=rank&amp;vid=UNS&amp;facet=tlevel,include,online_resources&amp;lang=fr_FR&amp;offset=0' target='_blank'>
+    <a-plane src="aframe-docelec.png">
+        <a-animation attribute="rotation" to="360 0 0" dur="5000" easing='linear' repeat="indefinite"></a-animation>
+    </a-plane>
 			</a-box>
-		</a-marker>
-
-		<!-- handle matrix marker -->
-		<a-marker type='barcode' value='5'>
-			<a-box position='0 0.5 0' material='opacity: 0.5; side: double;color:pink;'>
-				<a-torus-knot radius='0.26' radius-tubular='0.05'>
-					<a-animation attribute="rotation" to="360 0 0" dur="5000" easing='linear' repeat="indefinite"></a-animation>
-				</a-torus-knot>
-			</a-box>
-		</a-marker>
-		
-		<!-- handle kanji marker -->
-		<a-marker preset='kanji'>
-			<a-box position='0 0.5 0' material='opacity: 0.5; side: double;color:green;'>
-				<a-torus-knot radius='0.26' radius-tubular='0.05'>
-					<a-animation attribute="rotation" to="360 0 0" dur="5000" easing='linear' repeat="indefinite"></a-animation>
-				</a-torus-knot>
-			</a-box>
-		</a-marker>
-		
-		<!-- add a simple camera -->
-		<a-entity camera></a-entity>   
+			</a-marker>
+     <a-entity camera> <a-cursor color="#4CC3D9"></a-cursor></a-entity>
+	</a-scene>
   </body>
 </html>
