@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>  
+  <head>
+ <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width,user-scalable=yes">
   <!-- liens vers les fichiers javascript A-Frame--> 
 <script src="../lib/aframe/aframe.min.js"></script>
-<script src="../lib/aframe/aframe-ar.min.js"></script>       
-<script src="https://rawgit.com/gasolin/aframe-href-component/master/dist/aframe-href-component.min.js"></script>        
+	  <script src="../lib/aframe/aframe-ar.min.js"></script>
+	  <script>THREEx.ArToolkitContext.baseURL = "https://rawgit.com/jeromeetienne/ar.js/master/three.js/"</script>
+<!--<script src="https://rawgit.com/gasolin/aframe-href-component/master/dist/aframe-href-component.min.js"></script>-->
+	   <style>
+#arjsDebugUIContainer {
+    display: none;}
+.a-enter-vr-button {
+    display: none;}
+    </style>
   </head>     
- <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+ <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
 	<a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
 		<!-- handle unknown marker -->
 		<!-- <a-marker type='unknown'>
