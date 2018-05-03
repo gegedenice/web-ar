@@ -4,25 +4,19 @@
  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width,user-scalable=yes">
   <!-- liens vers les fichiers javascript A-Frame--> 
 <script src="../lib/aframe/aframe.min.js"></script>
-	  <script src="../lib/aframe/aframe-ar.min.js"></script>
+	  
 	  <script src="../lib/aframe/aframe-href-component.js"></script>
-	  <script>THREEx.ArToolkitContext.baseURL = "https://rawgit.com/jeromeetienne/ar.js/master/three.js/"</script>
-	   <style>
-#arjsDebugUIContainer {
-    display: none;}
-.a-enter-vr-button {
-    display: none;}
-    </style>
+	 
   </head>     
  <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
-	<a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
-		 <a-marker preset="hiro">
+	<a-scene>
+		
 <a-box position='0 0.5 0' material='opacity: 0.5; side: double;color:red;' href='http://catalogue.unice.fr:1701/primo-explore/search?query=any,contains,sociologie&amp;tab=default_tab&amp;search_scope=UNS&amp;sortby=rank&amp;vid=UNS&amp;facet=tlevel,include,online_resources&amp;lang=fr_FR&amp;offset=0' target='_blank'>
     <a-plane src="plane-img.png">
         <a-animation attribute="rotation" to="360 0 0" dur="5000" easing='linear' repeat="indefinite"></a-animation>
     </a-plane>
 			</a-box>
-			</a-marker>
+			
      <a-entity camera> <a-cursor color="#4CC3D9"></a-cursor></a-entity>
 	</a-scene>
   </body>
