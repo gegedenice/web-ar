@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+ <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width,user-scalable=yes">
+  <!-- liens vers les fichiers javascript A-Frame--> 
+<script src="../lib/aframe/aframe.min.js"></script>
+	  <script src="../lib/aframe/aframe-ar.min.js"></script>
+	  <script>THREEx.ArToolkitContext.baseURL = "https://rawgit.com/jeromeetienne/ar.js/master/three.js/"</script>
+	  <script>
+	  /* globals AFRAME */
+if (typeof AFRAME === 'undefined') {
+  throw new Error('Component attempted to register before AFRAME' +
+    ' was available.');
+}
+/**
+ * Hyper Link component for A-Frame.
+ */
+AFRAME.registerComponent('href', {
+  schema: {
+    default: ''
+  },
+  boundClickHandler: undefined,
+  clickHandler: function hrefClickHandler() {
+    var url = this.data;
+    var target = this.el.getAttribute('target');
+    console.log('link to ' + url);
+    if (url && url[0] === '#') { // in-page anchor
+      var ele = document.querySelector(url);
+      var cams = document.querySelectorAll('a-camera');
+      if (ele && cams) {
+        var targetPosition = ele.getAttribute('position');
+        console.log('focus camera to position:' +
+          JSON.stringify(targetPosition));
+        cams[0].setAttribute('position', targetPosition);
+        window.location.hash = url;
+      } else {
+        console.log('#id or a-camera is not defined');
+      }
+    } else { // normal hyper link
+      if (target) {
+        var animation = '';
+        var exitAnimation = null;
+        console.log('target to ' + target);
+        if (target.indexOf('#') >= 0) {
+          var li = target.split('#');
+          target = li[0];
+          animation = li[1];
+          console.log('target to ' + target + ' & animate ' + animation);
+        }
+        switch(target) {
+        case '_blank':
+          if (animation) {
+            exitAnimation = document.getElementById(animation);
+            exitAnimation.addEventListener('animationend',
+              function animationendHandler() {
+                exitAnimation.removeEventListener('animationend',
+                  animationendHandler);
+                window.open(url);
+              });
+            this.el.emit('href');
+          } else {
+            window.open(url);
+          }
+          break;
+        case 'window':
+        default:
+          if (animation) {
+            exitAnimation = document.getElementById(animation);
+            exitAnimation.addEventListener('animationend',
+              function animationendHandler() {
+                exitAnimation.removeEventListener('animationend',
+                  animationendHandler);
+                window.location.href = url;
+              });
+            this.el.emit('href');
+          } else {
+            window.location.href = url;
+          }
+          break;
+        }
+      } else {
+        window.location.href = url;
+      }
+    }
+  },
+  /**
+   * Called once when component is attached. Generally for initial setup.
+   */
+  init: function() {
+    this.boundClickHandler = this.clickHandler.bind(this);
+    this.el.addEventListener('click', this.boundClickHandler);
+  },
+  /**
+   * Called when a component is removed (e.g., via removeAttribute).
+   * Generally undoes all modifications to the entity.
+   */
+  remove: function() {
+    this.el.removeEventListener('click', this.boundClickHandler);
+  }
+});
+	  </script>
+	   <style>
+#arjsDebugUIContainer {
+    display: none;}
+.a-enter-vr-button {
+    display: none;}
+    </style>
+  </head>     
+ <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+	<a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+		 <a-marker-camera type="pattern" patternUrl="retrouvez-moi.patt">
+<a-box position='0 0.5 0' material='opacity: 0.5; side: double;color:red;' href='http://catalogue.unice.fr:1701/primo-explore/search?query=any,contains,sociologie&amp;tab=default_tab&amp;search_scope=UNS&amp;sortby=rank&amp;vid=UNS&amp;facet=tlevel,include,online_resources&amp;lang=fr_FR&amp;offset=0' target='_blank'>
+    <a-plane src="">
+        <a-animation attribute="rotation" to="360 0 0" dur="5000" easing='linear' repeat="indefinite"></a-animation>
+    </a-plane>
+			</a-box>
+			</a-marker-camera>
+     <a-entity camera> <a-cursor color="#4CC3D9"></a-cursor></a-entity>
+	</a-scene>
+  </body>
+</html>
