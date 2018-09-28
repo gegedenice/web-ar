@@ -108,7 +108,7 @@ AFRAME.registerComponent('href', {
   </head>     
  <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
 	<a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
-		 <a-marker preset="custom" url="https://gegedenice.github.io/web-ar/escapegame/retouvez_moi.patt">
+		 <a-marker preset='custom' type='pattern' url="https://gegedenice.github.io/web-ar/escapegame/retouvez_moi.patt">
 <a-box position='0 0.5 0' material='opacity: 0.5; side: double;color:red;' href='http://catalogue.unice.fr:1701/primo-explore/search?query=any,contains,sociologie&amp;tab=default_tab&amp;search_scope=UNS&amp;sortby=rank&amp;vid=UNS&amp;facet=tlevel,include,online_resources&amp;lang=fr_FR&amp;offset=0' target='_blank'>
     <a-plane src="retrouvez_moi.png">
         <a-animation attribute="rotation" to="360 0 0" dur="5000" easing='linear' repeat="indefinite"></a-animation>
