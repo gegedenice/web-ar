@@ -108,15 +108,9 @@ AFRAME.registerComponent('href', {
   </head>     
  <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
 	<a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
-		 <a-marker preset='kanji'></a-marker>
-		<a-text value="Hello, World!"></a-text>
-<!-- define your gltf asset -->
-<a-assets>
-  <a-asset-item id="tree" src="scene.gltf"></a-asset-item>
-</a-assets>
-<!-- use your gltf model -->
-<a-entity gltf-model="##tree"></a-entity>
-     <!--<a-entity camera> <a-cursor color="#4CC3D9"></a-cursor></a-entity>-->
+		 <a-marker preset='kanji'>
+		<a-tetrahedron color="#FF926B" radius="5"></a-tetrahedron>
+			 </a-marker>
 	</a-scene>
   </body>
 </html>
